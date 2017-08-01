@@ -11,4 +11,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should have proper title" do
+  	get users_new_url
+  	assert_select "title", "New User"
+  end
 end

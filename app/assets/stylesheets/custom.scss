@@ -1,2 +1,37 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+body {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.container {
+	max-width: 730px;
+}
+
+.header {
+	margin-bottom: 30px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #e5e5e5;
+
+	h3 {
+		margin-top: 0px;
+		margin-bottom: 0px;
+		line-height:40px;
+	}
+}
+
+.jumbotron {
+	text-align: center;
+}
+
+.marketing {
+	margin: 40px 0;
+}
+
+.footer {
+	border-top: 1px solid #e5e5e5;
+	color: #777;
+	padding-top: 20px;
+}
+
