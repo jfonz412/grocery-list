@@ -81,4 +81,8 @@ class UserTest < ActiveSupport::TestCase
   	assert_not @user.valid?
   end
 
+  # see listing 9.17 on the hartl tutorial for info on this bug
+  test "authenticated? should return false for a user with nil digest" do
+    assert_not @user.authenticated?('')
+  end
 end

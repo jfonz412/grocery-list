@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+	attr_accessor :remember_token
+
 	# Callbacks
 	before_save :downcase_email
 
@@ -10,6 +12,36 @@ class User < ApplicationRecord
 			  uniqueness: { case_sensitive: false } #emails must be unique no matter the case
 	validates :password, length: {minimum:6} # no need to validate presence here
 	has_secure_password
+
+	#digests a string, increasing security
+	def digest(string) 
+	    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                              		  BCrypt::Engine.cost
+		BCrypt::Password.create(string, cost: cost)
+	end
+
+	# generates random token using Ruby standard librare (SecureRandom)
+	def new_token
+		SecureRandom.urlsafe_base64
+	end
+
+	# get and digest new token, update attribute with token
+	def remember
+		self.remember_token = self.new_token
+		update_attribute(:remember_digest, self.digest(remember_token))
+	end
+
+	# take user's remember digest and compare it to remember token (arg1)
+	def authenticated?(remember_token)
+		return false if remember_digest.nil? # stops bug 9.17
+		BCrypt::Password.new(remember_digest).is_password?(remember_token)
+	end
+
+	# when user logs out, erase remember token
+	def forget
+		update_attribute(:remember_digest, nil)
+	end
+
 	private
 		def downcase_email
 			self.email.downcase!

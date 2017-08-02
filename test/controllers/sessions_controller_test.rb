@@ -26,6 +26,12 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_select "a[href=?]", login_path
     assert_select "a[href=?]", logout_path,      count: 0
+
+    # Simulate clicking logout on a second window
+    delete logout_path
+    follow_redirect!
+    assert_select "a[href=?]", login_path
+    assert_select "a[href=?]", logout_path, count: 0
   end
 
   test "no login with invalid info" do
