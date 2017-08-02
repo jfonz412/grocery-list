@@ -11,7 +11,6 @@ module SessionsHelper
 		if (user_id = session[:user_id]) #if you are able to assign this var
 			@current_user ||= User.find_by(id: user_id) 
 		elsif (user_id = cookies.signed[:user_id])
-			raise
 			user = User.find_by(id: user_id)
 			# check the token in the cookie against the user's digest 
 			if user && user.authenticated?(cookies[:remember_token]) # see user.rb

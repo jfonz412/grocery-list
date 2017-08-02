@@ -14,21 +14,22 @@ class User < ApplicationRecord
 	has_secure_password
 
 	#digests a string, increasing security
-	def digest(string) 
+	#called with class name so it can be called without an instance
+	def User.digest(string) 
 	    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                               		  BCrypt::Engine.cost
 		BCrypt::Password.create(string, cost: cost)
 	end
 
 	# generates random token using Ruby standard librare (SecureRandom)
-	def new_token
+	def User.new_token
 		SecureRandom.urlsafe_base64
 	end
 
 	# get and digest new token, update attribute with token
 	def remember
-		self.remember_token = self.new_token
-		update_attribute(:remember_digest, self.digest(remember_token))
+		self.remember_token = User.new_token
+		update_attribute(:remember_digest, User.digest(remember_token))
 	end
 
 	# take user's remember digest and compare it to remember token (arg1)
