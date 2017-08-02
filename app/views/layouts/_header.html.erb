@@ -9,7 +9,7 @@
 			</li>
 			<% if logged_in? %>
 				<li role="presentation">
-					<%= link_to "Sign Out", logout_path %>
+					<%= link_to "Sign Out", logout_path, method: :delete %>
 				</li>
 			<% else %>
 				<li role="presentation">

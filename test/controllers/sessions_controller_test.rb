@@ -11,7 +11,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "login with valid info" do
+  test "login/logout with valid info" do
     get login_path
     post sessions_create_path, params: { session: { email: @user.email,
                                                     password: "pass123" } }
@@ -19,6 +19,13 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_select "a[href=?]", login_path, count: 0
     assert_select "a[href=?]", logout_path
+
+    assert is_logged_in?
+    delete logout_path
+    assert_redirected_to root_url
+    follow_redirect!
+    assert_select "a[href=?]", login_path
+    assert_select "a[href=?]", logout_path,      count: 0
   end
 
   test "no login with invalid info" do
