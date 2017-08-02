@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   		flash[:success] = "Thanks for signing up!"
   		redirect_to root_url
   	else
-  		flash.now[:warning] = "Something went wrong..."
+  		flash.now[:warning] = @user.errors.full_messages
   		render users_new_path
   	end
   end
