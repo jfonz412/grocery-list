@@ -1,11 +1,6 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
-  def setup
-    @user = User.new(name: "Foobar", email: "Foo@bar.com",
-                     password: "pass123", password_confirmation: "pass123")
-  end
-
   test "should get new" do
     get users_new_url
     assert_response :success

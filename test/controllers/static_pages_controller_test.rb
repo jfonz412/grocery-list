@@ -10,6 +10,4 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     get static_pages_about_path
     assert_response :success
   end
-
-  #if signed in, header should say log out
 end
