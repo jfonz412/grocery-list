@@ -1,6 +1,6 @@
 <% provide(:title, "Sign In") %>
 <div class="jumbotron">
-	<%= form_for :session, url: sessions_create_path, html: {class: "form-signin"} do |f| %>
+	<%= form_for :session, url: login_path, html: {class: "form-signin"} do |f| %>
 			<%= f.label :email %>
 			<%= f.text_field :email, class: 'form-control'%>
 			<br>

@@ -13,7 +13,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
 
   test "login/logout with valid info" do
     get login_path
-    post sessions_create_path, params: { session: { email: @user.email,
+    post login_path, params: { session: { email: @user.email,
                                                     password: "pass123" } }
     assert_redirected_to root_url
     follow_redirect!
@@ -36,7 +36,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
 
   test "no login with invalid info" do
     get login_path
-    post sessions_create_path, params: { session: { email: @user.email,
+    post login_path, params: { session: { email: @user.email,
                                                     password: "wrongpass456" } }
     assert_template 'sessions/new'
     assert_select "a[href=?]", login_path

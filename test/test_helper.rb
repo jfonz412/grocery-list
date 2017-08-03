@@ -11,8 +11,8 @@ class ActiveSupport::TestCase
   end
 
   def log_in_as(user, remember_me: '0') # do not remember by default
-  	post sessions_create_path, params: { session: { email: user.email, 
-  									   password: 'pass123',
-  									   remember_me: remember_me } }
+  	post login_path, params: { session: { email: user.email, 
+									   password: 'pass123',
+									   remember_me: remember_me } }
   end
 end
