@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get  '/about',    to: 'static_pages#about'
 
   get '/new_list',  to: 'lists#new'
+  post '/list',     to: 'lists#create'
   get '/lists',     to: 'lists#index'
   get 'lists/show'
   get 'lists/edit'

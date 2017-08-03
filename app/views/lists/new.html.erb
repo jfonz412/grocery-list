@@ -1,2 +1,9 @@
-<h1>Lists#new</h1>
-<p>Find me in app/views/lists/new.html.erb</p>
+<% provide(:title, "New List") %>
+<div class="jumbotron">
+	<%= form_for @list, url: list_path, html: {class: "form-signin"} do |f| %>
+		<%= check_box_tag(:include) %>
+		<%= label_tag(:include, "Add to list") %><br>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	<% end %>
+</div>
