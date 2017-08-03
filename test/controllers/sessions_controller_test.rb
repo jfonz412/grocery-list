@@ -2,8 +2,7 @@ require 'test_helper'
 
 class SessionsControllerTest < ActionDispatch::IntegrationTest
   def setup
-    @user = User.new(name: "Foobar", email: "Foo@bar.com",
-                     password: "pass123", password_confirmation: "pass123")
+    @user = users(:bob)
     @user.save
   end
   test "should get new" do

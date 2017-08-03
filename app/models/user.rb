@@ -13,6 +13,9 @@ class User < ApplicationRecord
 	validates :password, length: {minimum:6} # no need to validate presence here
 	has_secure_password
 
+	# Relationships
+	has_many :lists
+
 	#digests a string, increasing security
 	#called with class name so it can be called without an instance
 	def User.digest(string) 
