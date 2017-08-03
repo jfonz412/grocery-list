@@ -4,12 +4,10 @@ one:
   name: MyString
   price: 1.5
   user: one
-  list: one
   category: one
 
 two:
   name: MyString
   price: 1.5
   user: two
-  list: two
   category: two
