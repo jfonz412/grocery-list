@@ -16,6 +16,7 @@ class User < ApplicationRecord
 	# Relationships
 	has_many :lists
 	has_many :user_items
+	has_many :categories
 
 	#digests a string, increasing security
 	#called with class name so it can be called without an instance
