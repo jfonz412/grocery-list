@@ -55,7 +55,12 @@ class User < ApplicationRecord
 		end
 
 		def create_default_categories
-			self.categories.build(name: "Dairy")
+			default_categories = ["Dairy", "Bakery", "Produce", "Deli", "Meat",
+								 					  "Frozen", "Pantry Items"]
+			default_categories.each do |category|
+				new_category = self.categories.build(name: category)
+				new_category.save
+			end
 		end
 end
 

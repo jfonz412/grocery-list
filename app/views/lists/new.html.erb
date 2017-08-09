@@ -6,7 +6,9 @@
 			<%= f.text_field :name, placeholder: "Name your list (optional)" %>
 			<br>
 			<br>
-
+			<% current_user.categories.each do |category| %>
+				<%= category.name %><br>
+			<% end %>
 		<% end %>
 	</div>
 </div>
