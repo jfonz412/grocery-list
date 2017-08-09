@@ -10,14 +10,19 @@
 				<div class="dropdown-button" data-toggle="collapse" data-target="#<%= category.name %>">
 					<span class="glyphicon glyphicon-chevron-down"></span>
 				</div>
+
 				 	<div id="<%= category.name %>" class="collapse">
 				   	<% category.user_items.each do |item| %>
-				    <%= item.name %>
-				  <% end %>
-				  <!-- new item -->
+					   	<%= f.fields_for @list_item do |list_item| %>
+						   	<%= list_item.check_box :user_item_id, value: item.id %>
+					    	<%= item.name %>
+					    <% end %>
+				  	<% end %>
 
 				</div>
 			<% end %>
+			<br>
+			<%= f.submit "Submit" %>
 		</div>
 	<% end %>
 </div>
