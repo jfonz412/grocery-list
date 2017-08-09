@@ -4,5 +4,6 @@ class UserItem < ApplicationRecord
 	# Relationships
   belongs_to :user
   belongs_to :category
-  has_many   :lists, through: :list_items, source: :list
+  has_many 	 :list_items
+  has_many   :lists, :through => :list_items
 end
