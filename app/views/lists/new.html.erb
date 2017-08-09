@@ -4,11 +4,21 @@
 		<h2>New List</h2>
 		<%= form_for @list, url: list_path, html: {class: "form-signin"} do |f| %>
 			<%= f.text_field :name, placeholder: "Name your list (optional)" %>
-			<br>
-			<br>
-			<% current_user.categories.each do |category| %>
-				<%= category.name %><br>
-			<% end %>
+			<div class="categories">
+				<% current_user.categories.each do |category| %>
+					<h3>
+					   <%= category.name %>
+					   <a href="#<%= category.name %>" data-toggle="collapse" data-target="#<%= category.name %>">
+					     <span class="glyphicon glyphicon-chevron-down"></span>
+					   </a>
+					 </h3>   
+					 <div id="<%= category.name %>" class="collapse">
+					   <% category.user_items.each do |item| %>
+					     <%= item.name %>
+					   <% end %>
+					 </div>
+				<% end %>
+			</div>
 		<% end %>
 	</div>
 </div>
