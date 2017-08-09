@@ -6,12 +6,12 @@
 			<%= f.text_field :name, placeholder: "Name your list (optional)" %>
 			<div class="categories">
 				<% current_user.categories.each do |category| %>
-					<h3>
-					   <%= category.name %>
-					   <a href="#<%= category.name %>" data-toggle="collapse" data-target="#<%= category.name %>">
-					     <span class="glyphicon glyphicon-chevron-down"></span>
-					   </a>
-					 </h3>   
+					<h3 class="category">
+					  <%= category.name %>
+					</h3>   
+					<div class="dropdown-button" data-toggle="collapse" data-target="#<%= category.name %>">
+						<span class="glyphicon glyphicon-chevron-down"></span>
+					</div>
 					 <div id="<%= category.name %>" class="collapse">
 					   <% category.user_items.each do |item| %>
 					     <%= item.name %>
@@ -22,3 +22,10 @@
 		<% end %>
 	</div>
 </div>
+
+<!-- dropdown button script -->
+<script>
+  $(document).ready(function () {
+      $('.data-toggle').collapse();
+  });
+</script>

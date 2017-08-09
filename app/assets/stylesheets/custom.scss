@@ -6,7 +6,6 @@ body {
 	padding-bottom: 20px;
 }
 
-
 .container {
 	max-width: 730px;
 }
@@ -65,5 +64,22 @@ body {
 }
 
 .user-items {
+
+}
+
+.category{
+	width: 75%;
+	display: inline-block;
+}
+
+.dropdown-button {
+	border: 1px solid black;
+	font-size: 20px;
+	padding: 5px;
+	padding-bottom: 0px;
+	text-align: center;
+	background-color: white;
+	border-radius: 5px;
+	display: inline;
 
 }

@@ -20,4 +20,9 @@ class CategoryTest < ActiveSupport::TestCase
 		dup_category.name = "PRODUCE"
 		assert_not dup_category.valid?
 	end
+
+	test "can't be more than 25 chars" do
+		@category.name = "a" * 26
+		assert_not @category.valid?
+	end
 end
