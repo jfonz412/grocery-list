@@ -2,9 +2,7 @@ require 'test_helper'
 
 class ListItemTest < ActiveSupport::TestCase
 	def setup
-		@item = ListItem.new(name: "Milk", price: 1.25, 
-													list_id: lists(:one).id, 
-													category_id: categories(:one).id)
+		@item = ListItem.new(list_id: lists(:one).id, user_item_id: user_items(:one).id)
 	end
 
 	test "should be valid" do
@@ -16,25 +14,8 @@ class ListItemTest < ActiveSupport::TestCase
 		assert_not @item.valid?
 	end
 
-	test "must have category id" do
-		@item.category_id = nil
+	test "must have user_item id" do
+		@item.user_item_id = nil
 		assert_not @item.valid?
-	end
-
-	test "name can't be blank" do
-		@item.name = " "
-		assert_not @item.valid?
-	end
-
-	test "no duplicate items" do
-		@item.save
-		dup_item = @item.dup
-		dup_item.name = "MILK"
-		assert_not dup_item.valid?
-	end
-
-	test "price CAN be blank" do
-		@item.price = nil
-		assert @item.valid?
 	end
 end

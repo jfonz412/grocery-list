@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170804225453) do
+ActiveRecord::Schema.define(version: 20170809200238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,14 +37,12 @@ ActiveRecord::Schema.define(version: 20170804225453) do
   end
 
   create_table "list_items", force: :cascade do |t|
-    t.string   "name"
-    t.float    "price"
     t.integer  "list_id"
-    t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["category_id"], name: "index_list_items_on_category_id", using: :btree
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "user_item_id"
     t.index ["list_id"], name: "index_list_items_on_list_id", using: :btree
+    t.index ["user_item_id"], name: "index_list_items_on_user_item_id", using: :btree
   end
 
   create_table "lists", force: :cascade do |t|
@@ -79,8 +77,8 @@ ActiveRecord::Schema.define(version: 20170804225453) do
   add_foreign_key "items", "categories"
   add_foreign_key "items", "lists"
   add_foreign_key "items", "users"
-  add_foreign_key "list_items", "categories"
   add_foreign_key "list_items", "lists"
+  add_foreign_key "list_items", "user_items"
   add_foreign_key "lists", "users"
   add_foreign_key "user_items", "categories"
   add_foreign_key "user_items", "users"
