@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
 	# Callbacks
 	before_save :downcase_email
+	after_save  :create_default_categories
 
 	# Validations
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -51,6 +52,10 @@ class User < ApplicationRecord
 	private
 		def downcase_email
 			self.email.downcase!
+		end
+
+		def create_default_categories
+			self.categories.build(name: "Dairy")
 		end
 end
 

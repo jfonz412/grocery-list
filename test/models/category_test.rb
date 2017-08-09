@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CategoryTest < ActiveSupport::TestCase
 	def setup
-		@category = Category.new(name:"Produce")
+		@category = Category.new(name:"Produce", user_id: users(:bob).id)
 	end
 
 	test "should be valid" do

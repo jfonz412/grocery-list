@@ -6,10 +6,7 @@
 			<%= f.text_field :name, placeholder: "Name your list (optional)" %>
 			<br>
 			<br>
-			<% current_user.user_items.each do |item| %>
-				<%= check_box_tag(:include, class: "checkbox inline") %>
-				<%= f.text_field :name, placeholder: "Item name" %>
-			<% end %>
+
 		<% end %>
 	</div>
 </div>
