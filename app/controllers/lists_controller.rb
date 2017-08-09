@@ -1,11 +1,21 @@
 class ListsController < ApplicationController
-  before_action :log_in_user
+  before_action :redirect_to_login
 
   def new
-  	@list = List.new
+    @list = List.new
   end
 
   def create
+    @list = List.new(name: list_params[:name], user_id: current_user.id)
+    if @list.save
+      params[:list][:list_item].each do |l|
+        @list.list_items.create(user_item_id: l[:user_item_id])
+      end
+      redirect_to root_url
+    else
+      flash[:warning] = @list.errors.full_messages
+      render 'new'
+    end
   end
 
   def index
@@ -18,10 +28,16 @@ class ListsController < ApplicationController
   end
 
   private
-    # can probably move to helper in the near future
-    def log_in_user
-      if !logged_in?
-        redirect_to login_path
+    def list_params
+      params.require(:list).permit(:name, list_item: [:user_item_id])
+    end
+
+    def empty_list_items(list)
+      list_items = []
+      count = current_user.user_items.count
+      count.times do |n|
+        list_items << list.list_items.build
       end
-    end 
+      list_items
+    end
 end

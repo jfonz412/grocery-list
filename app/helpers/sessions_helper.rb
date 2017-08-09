@@ -5,6 +5,12 @@ module SessionsHelper
 		session[:user_id] = user.id
 	end
 
+	def redirect_to_login
+      if !logged_in?
+        redirect_to login_path
+      end
+    end 
+
 	# look in the session hash for the user id
 	# set it to current_user if current_user is nil
 	def current_user

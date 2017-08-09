@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class ListsControllerTest < ActionDispatch::IntegrationTest
+
   test "should get new if logged in" do
     get new_list_path
     assert_response :redirect
@@ -8,6 +9,7 @@ class ListsControllerTest < ActionDispatch::IntegrationTest
     get new_list_path
     assert_response :success
   end
+  
 =begin
 
   #NEED LOG IN CALLBACKS

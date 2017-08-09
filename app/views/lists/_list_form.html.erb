@@ -13,13 +13,13 @@
 
 				 	<div id="<%= category.name %>" class="collapse">
 				   	<% category.user_items.each do |item| %>
-					   	<%= f.fields_for @list_item do |list_item| %>
-						   	<%= list_item.check_box :user_item_id, value: item.id %>
-					    	<%= item.name %>
+					   	<%= f.fields_for l = @list.list_items.build, index: l.id do |list_item| %>
+						   	<%= list_item.check_box :user_item_id, { checked: false }, item.id, nil %>
+					    	<%= item.name %><br>
 					    <% end %>
 				  	<% end %>
+					</div>
 
-				</div>
 			<% end %>
 			<br>
 			<%= f.submit "Submit" %>
