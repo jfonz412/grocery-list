@@ -10,20 +10,22 @@ class ListsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
   
-=begin
 
   #NEED LOG IN CALLBACKS
-  test "should get index" do
+  test "should get index if logged in" do
+    log_in_as(users(:bob))
     get lists_path
     assert_response :success
   end
 
-  test "should get show" do
-    get lists_show_url
+  test "should get show if logged in" do
+    log_in_as(users(:bob))
+    get lists_show_path(lists(:one).id)
     assert_response :success
   end
+=begin
 
-  test "should get edit" do
+  test "should get edit if logged in" do
     get lists_edit_url
     assert_response :success
   end

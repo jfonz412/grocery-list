@@ -11,7 +11,7 @@ class ListsController < ApplicationController
       params[:list][:list_item].each do |l|
         @list.list_items.create(user_item_id: l[:user_item_id])
       end
-      redirect_to root_url
+      redirect_to lists_show_path(@list)
     else
       flash[:warning] = @list.errors.full_messages
       render 'new'
@@ -19,9 +19,11 @@ class ListsController < ApplicationController
   end
 
   def index
+    @lists = current_user.lists
   end
 
   def show
+    @list = List.find_by(id: params[:id])
   end
 
   def edit
