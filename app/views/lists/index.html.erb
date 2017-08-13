@@ -4,7 +4,11 @@
 		<ul>
 		<% @lists.each_with_index do |list, n| %>
 			<% list.name == "" ? name = "List #{n + 1}" : name = list.name %>
-			<li><%= link_to name, lists_show_path(params[:id] = list.id) %></li>
+			<li>
+				<%= link_to name, lists_show_path(params[:id] = list.id) %>
+				<%= link_to "(edit)", 	lists_edit_path(params[:id] = list.id), class: "edit-list-links" %>
+				<%= link_to "(delete)", lists_delete_path(params[:id] = list.id), class: "edit-list-links" %>
+			</li>
 		<% end %>
 		</ul>
 	</div>

@@ -24,11 +24,9 @@ class ListsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-=begin
-
   test "should get edit if logged in" do
-    get lists_edit_url
+    log_in_as(users(:bob))
+    get lists_edit_path(lists(:one).id)
     assert_response :success
   end
-=end
 end
