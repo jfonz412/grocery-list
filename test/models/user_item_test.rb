@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UserItemTest < ActiveSupport::TestCase
 	def setup
-		@item = UserItem.new(name: "Milk", price: 1.25, 
+		@item = UserItem.new(name: "Bread", price: 1.25, 
 													user_id: users(:bob).id, 
 													category_id: categories(:one).id)
 	end

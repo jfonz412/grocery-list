@@ -1,12 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+milk:
+  name: milk
   price: 1.5
-  user: one
+  user: bob
   category: one
 
-two:
+one:
   name: MyString
   price: 1.5
   user: two

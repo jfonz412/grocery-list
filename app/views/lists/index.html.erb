@@ -1,7 +1,11 @@
-<h1>My lists</h1>
-<ul>
-<% @lists.each_with_index do |list, n| %>
-	<% list.name == "" ? name = "List #{n + 1}" : name = list.name %>
-	<li><%= link_to name, lists_show_path(params[:id] = list.id) %></li>
-<% end %>
-</ul>
+<div class="jumbotron">
+	<div class="lists">
+		<%= current_user.name + "'s lists" %>
+		<ul>
+		<% @lists.each_with_index do |list, n| %>
+			<% list.name == "" ? name = "List #{n + 1}" : name = list.name %>
+			<li><%= link_to name, lists_show_path(params[:id] = list.id) %></li>
+		<% end %>
+		</ul>
+	</div>
+</div>

@@ -82,3 +82,16 @@ body {
 	border-radius: 5px;
 	display: inline;
 }
+
+.lists {
+	font-size: 45px;
+	ul {
+		text-align: left;
+		list-style: none;
+		li {
+			font-size:20px;
+			margin-top: 5px;
+			margin-bottom: 5px;
+		}
+	}
+}
