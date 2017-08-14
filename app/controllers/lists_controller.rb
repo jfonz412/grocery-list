@@ -13,9 +13,10 @@ class ListsController < ApplicationController
           @list.list_items.create(user_item_id: l[:user_item_id])
         end
       end
+      flash[:success] = "List created!"
       redirect_to lists_show_path(@list)
     else
-      flash[:warning] = @list.errors.full_messages
+      flash.now[:warning] = @list.errors.full_messages
       render 'new'
     end
   end
@@ -25,10 +26,15 @@ class ListsController < ApplicationController
   end
 
   def show
-    @list = List.find_by(id: params[:id])
+    @list = List.find_by(id: params[:format]) # not sure why this isn't id by default
+    #debugger
   end
 
   def edit
+    @list = List.find_by(id: params[:format])
+  end
+
+  def update
   end
 
   def destroy
