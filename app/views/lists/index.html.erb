@@ -7,7 +7,7 @@
 			<li>
 				<%= link_to name, lists_show_path(params[:id] = list.id) %>
 				<%= link_to "(edit)", 	lists_edit_path(params[:id] = list.id), class: "edit-list-links" %>
-				<%= link_to "(delete)", lists_delete_path(params[:id] = list.id), class: "edit-list-links" %>
+				<%= link_to "(delete)", "#", class: "edit-list-links" %>
 			</li>
 		<% end %>
 		</ul>

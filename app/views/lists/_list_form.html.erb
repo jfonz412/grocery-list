@@ -35,27 +35,11 @@
 							    </tr>
 						    <% end %>
 					  	<% end %>
-					  	<!-- User Item form here -->
-					  	<%= f.fields_for u = current_user.user_items.build, index: u.id do |user_item| %>
-					  		<tr>
-					  			<td>New:</td>
-					  			<td><%= user_item.text_field :name, placeholder: "Name",
-					  																		class: "txt" %></td>
-					  			<td><%= user_item.number_field :price,  :step => "0.01", 
-					  																		  placeholder: "Price",
-					  																		  class: "price" %></td>
-					  			<td>
-					  				<div class="add-item">
-					  					<span class="glyphicon glyphicon-plus"></span>
-					  				</div>
-					  			</td>
-					  		<tr>
-					  	<% end %>
 					  </table>
-
 					</div>
+					<!-- NEED SCRIPT FOR ADD ITEM TO RUN IN BACKGROUND -->
+					<%= render 'shared/user_item_form' %>
 				</div>
-
 			<% end %> <!-- current_user.categories -->
 			<br>
 			<%= f.submit "Submit" %>

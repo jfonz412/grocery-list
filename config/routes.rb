@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-  get 'user_items/create'
-
-  get 'user_items/destroy'
-
-  get 'user_items/update'
+  post 'user_items/create'
+  get  'user_items/destroy'
+  get  'user_items/update'
 
   root 'static_pages#home'
   get  '/about',    to: 'static_pages#about'

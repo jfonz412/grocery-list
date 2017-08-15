@@ -105,6 +105,16 @@ body {
 	}
 }
 
+.new-item {
+	background-color: white;
+	border: 1px solid black;
+	margin-top: 10px;
+	td, th {
+		text-align: center;
+		padding: 10px;
+	}
+}
+
 .txt {
 	width: 100px;
 }

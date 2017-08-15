@@ -1,0 +1,21 @@
+<!-- NEEDS SCRIPT TO PERFORM WITHOUT RELOADING PAGE -->
+
+<h3>Add new item:</h3>
+<%= form_for current_user.user_items.build, url: user_items_create_path do |f| %>
+	<table class="new-item">
+		<tr>
+			<th>Name</th>
+			<th>Price</th>
+		</tr>
+		<tr>
+			<td><%= f.text_field :name, placeholder: "Name",
+																		class: "txt" %></td>
+			<td><%= f.number_field :price,  :step => "0.01", 
+																		  placeholder: "Price",
+																		  class: "price" %></td>
+			<td>
+				<span class="glyphicon glyphicon-plus"></span>
+			</td>
+		</tr>
+	</table
+<% end %>
