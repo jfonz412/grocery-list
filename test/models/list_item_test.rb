@@ -18,4 +18,8 @@ class ListItemTest < ActiveSupport::TestCase
 		@item.user_item_id = nil
 		assert_not @item.valid?
 	end
+	test "quantity must not be < 1" do
+		@item.quantity = 0
+		assert_not @item.valid?
+	end
 end

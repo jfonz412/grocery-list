@@ -15,6 +15,7 @@
 				<!-- Dropdown div -->
 			 	<div id="<%= category.name %>" class="collapse">
 			 		<div class="table-responsive">
+			 			<!-- User Item table -->
 				 		<table class="items">
 				 			<tr>
 				 				<th>Add</th>
@@ -28,14 +29,29 @@
 								   	<td><%= list_item.check_box :user_item_id, { checked: false }, item.id, nil %></td>
 							    	<td><%= item.name %></td> 
 							    	<td><%= item.price %></td>
+					  				<td><%= list_item.number_field :quantity, 
+					  																			 	min: 1,
+					  																			 	class: "num"%></td>
 							    </tr>
 						    <% end %>
 					  	<% end %>
+					  	<!-- User Item form here -->
+					  	<%= f.fields_for u = current_user.user_items.build, index: u.id do |user_item| %>
+					  		<tr>
+					  			<td>New:</td>
+					  			<td><%= user_item.text_field :name, placeholder: "Name",
+					  																		class: "txt" %></td>
+					  			<td><%= user_item.number_field :price,  :step => "0.01", 
+					  																		  placeholder: "Price",
+					  																		  class: "price" %></td>
+					  		<tr>
+					  	<% end %>
 					  </table>
+
 					</div>
-			  	<!-- User Item form here -->
 				</div>
-			<% end %>
+
+			<% end %> <!-- current_user.categories -->
 			<br>
 			<%= f.submit "Submit" %>
 		</div>

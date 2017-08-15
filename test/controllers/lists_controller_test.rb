@@ -36,7 +36,8 @@ class ListsControllerTest < ActionDispatch::IntegrationTest
 		post list_path, params: { list: { 
 															name: "List", 
 															list_item_attributes: {
-															list_item: { user_item_id: user_items(:milk) } } } }
+															list_item: { user_item_id: user_items(:milk).id,
+																					 quantity: 3 } } } }
 		end
 		assert_not flash.empty?
 	end

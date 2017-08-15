@@ -42,15 +42,6 @@ class ListsController < ApplicationController
 
   private
     def list_params
-      params.require(:list).permit(:name, list_item: [:user_item_id])
-    end
-
-    def empty_list_items(list)
-      list_items = []
-      count = current_user.user_items.count
-      count.times do |n|
-        list_items << list.list_items.build
-      end
-      list_items
+      params.require(:list).permit(:name, list_item: [:user_item_id, :quantity])
     end
 end
