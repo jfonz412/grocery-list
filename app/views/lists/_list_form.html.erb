@@ -2,24 +2,39 @@
 	<h2>New List</h2>
 	<%= form_for @list, url: list_path, html: {class: "form-signin"} do |f| %>
 		<%= f.text_field :name, placeholder: "Name your list (optional)" %>
+		<!-- Category -->
 		<div class="categories">
 			<% current_user.categories.each do |category| %>
 				<h3 class="category">
 				  <%= category.name %>
-				</h3>   
+				</h3>
+				<!-- Items -->   
 				<div class="dropdown-button" data-toggle="collapse" data-target="#<%= category.name %>">
 					<span class="glyphicon glyphicon-chevron-down"></span>
 				</div>
-
-				 	<div id="<%= category.name %>" class="collapse">
-				   	<% category.user_items.each do |item| %>
-					   	<%= f.fields_for l = @list.list_items.build, index: l.id do |list_item| %>
-						   	<%= list_item.check_box :user_item_id, { checked: false }, item.id, nil %>
-					    	<%= item.name %><br>
-					    <% end %>
-				  	<% end %>
+				<!-- Dropdown div -->
+			 	<div id="<%= category.name %>" class="collapse">
+			 		<div class="table-responsive">
+				 		<table class="items">
+				 			<tr>
+				 				<th>Add</th>
+				 				<th>Name</th>
+				 				<th>Price</th>
+				 				<th>Qnty</th>
+				 			</tr>
+					   	<% category.user_items.each do |item| %>
+						   	<%= f.fields_for l = @list.list_items.build, index: l.id do |list_item| %>
+						   		<tr>
+								   	<td><%= list_item.check_box :user_item_id, { checked: false }, item.id, nil %></td>
+							    	<td><%= item.name %></td> 
+							    	<td><%= item.price %></td>
+							    </tr>
+						    <% end %>
+					  	<% end %>
+					  </table>
 					</div>
-
+			  	<!-- User Item form here -->
+				</div>
 			<% end %>
 			<br>
 			<%= f.submit "Submit" %>

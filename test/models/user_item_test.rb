@@ -37,4 +37,14 @@ class UserItemTest < ActiveSupport::TestCase
 		@item.price = nil
 		assert @item.valid?
 	end
+
+	test "name can't be longer than 20 chars" do
+		@item.name = "a" * 21
+		assert_not @item.valid?
+	end	
+
+	test "name can't be shorter than 3 chars" do
+		@item.name = "aa"
+		assert_not @item.valid?
+	end	
 end

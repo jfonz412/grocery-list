@@ -1,6 +1,7 @@
 class UserItem < ApplicationRecord
 	# Validations
-	validates :name, presence: true, uniqueness: { case_sensitive: false }
+	validates :name, presence: true, uniqueness: { case_sensitive: false },
+			  						 length: { minimum: 3, maximum: 20 }
 	# Relationships
   belongs_to :user
   belongs_to :category
