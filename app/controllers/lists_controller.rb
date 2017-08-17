@@ -7,11 +7,14 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(name: list_params[:name], user_id: current_user.id)
+
     if @list.save
       unless params[:list][:list_item].nil?
+
         params[:list][:list_item].each do |l|
           @list.list_items.create(user_item_id: l[:user_item_id])
         end
+        
       end
       flash[:success] = "List created!"
       redirect_to lists_show_path(@list)

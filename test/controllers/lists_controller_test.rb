@@ -30,14 +30,19 @@ class ListsControllerTest < ActionDispatch::IntegrationTest
 		assert_response :success
 	end
 
-	test "should create valid list and list items" do
+	test "should create valid list, list_items and user_items" do
 		log_in_as(users(:bob))
-		assert_difference "List.count", 1 do
-		post list_path, params: { list: { 
-															name: "List", 
-															list_item_attributes: {
-															list_item: { user_item_id: user_items(:milk).id,
-																					 quantity: 3 } } } }
+		assert_difference "UserItem.count" do
+			assert_difference "List.count" do
+				assert_difference "ListItem.count" do
+					post list_path, params: { list: { 
+																		name: "List", 
+																		list_item: [{ user_item_id: user_items(:milk).id,
+																								 quantity: 3 }],
+																		user_item: [{ user_id: users(:bob).id,
+																								  category_id: categories(:one).id }] } } 
+				end
+			end
 		end
 		assert_not flash.empty?
 	end

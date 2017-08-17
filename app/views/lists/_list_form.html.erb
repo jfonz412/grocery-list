@@ -37,8 +37,7 @@
 					  	<% end %>
 					  </table>
 					</div>
-					<!-- NEED SCRIPT FOR ADD ITEM TO RUN IN BACKGROUND -->
-					<%= render 'shared/user_item_form' %>
+					<%= render partial: 'shared/user_item_form', locals: {f: f, category_id: category.id}  %>
 				</div>
 			<% end %> <!-- current_user.categories -->
 			<br>

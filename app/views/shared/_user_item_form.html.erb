@@ -1,21 +1,23 @@
 <!-- NEEDS SCRIPT TO PERFORM WITHOUT RELOADING PAGE -->
 
 <h3>Add new item:</h3>
-<%= form_for current_user.user_items.build, url: user_items_create_path do |f| %>
-	<table class="new-item">
-		<tr>
-			<th>Name</th>
-			<th>Price</th>
-		</tr>
-		<tr>
-			<td><%= f.text_field :name, placeholder: "Name",
-																		class: "txt" %></td>
-			<td><%= f.number_field :price,  :step => "0.01", 
-																		  placeholder: "Price",
-																		  class: "price" %></td>
-			<td>
-				<span class="glyphicon glyphicon-plus"></span>
-			</td>
-		</tr>
-	</table
+	<%= f.fields_for u = @list.items.build, index: u.id do |user_item| %>
+		<%= user_item.hidden_field :user_id, 		 value: current_user.id %>
+		<%= user_item.hidden_field :category_id, value: category_id %>
+		<table class="new-item">
+			<tr>
+				<th>Name</th>
+				<th>Price</th>
+			</tr>
+			<tr>
+				<td><%= user_item.text_field :name, placeholder: "Name",
+																			class: "txt" %></td>
+				<td><%= user_item.number_field :price,  :step => "0.01", 
+																			  placeholder: "Price",
+																			  class: "price" %></td>
+				<td>
+					<span class="glyphicon glyphicon-plus"></span>
+				</td>
+			</tr>
+		</table>
 <% end %>
