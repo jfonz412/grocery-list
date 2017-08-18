@@ -39,8 +39,7 @@ class ListsControllerTest < ActionDispatch::IntegrationTest
 																		name: "List", 
 																		list_item: [{ user_item_id: user_items(:milk).id,
 																								 quantity: 3 }],
-																		user_item: [{ user_id: users(:bob).id,
-																								  category_id: categories(:one).id }] } } 
+																		user_item: [{ name: "Carrots", category_id: categories(:one).id }] } } 																							  
 				end
 			end
 		end

@@ -9,6 +9,7 @@ class ListsController < ApplicationController
     @list = List.new(name: list_params[:name], user_id: current_user.id)
     if @list.save
     	build_list_items
+    	build_user_items
       flash[:success] = "List created!"
       redirect_to lists_show_path(@list)
     else
@@ -38,13 +39,22 @@ class ListsController < ApplicationController
 
   private
     def list_params
-      params.require(:list).permit(:name, :list_item => [:user_item_id, :quantity])
+      params.require(:list).permit(:name, :list_item => [:user_item_id, :quantity],
+      																		:user_item => [:category_id, :name, :price])
     end
 
   def build_list_items
 		unless params[:list][:list_item].nil?
 			params[:list][:list_item].each do |l|
-			@list.list_items.create(user_item_id: l[:user_item_id])
+				@list.list_items.create(user_item_id: l[:user_item_id], quantity: l[:quantity])
+			end
+		end
+	end
+
+	def build_user_items
+		unless params[:list][:user_item].nil?
+			params[:list][:user_item].each do |u|
+				item = current_user.user_items.create(name: u[:name], price: u[:price], category_id: u[:category_id])
 			end
 		end
 	end
