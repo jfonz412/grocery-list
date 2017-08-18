@@ -2,7 +2,7 @@
 	<h2>New List</h2>
 	<%= form_for @list, url: list_path, html: {class: "form-signin"} do |f| %>
 		<%= f.text_field :name, placeholder: "Name your list (optional)" %>
-		<!-- Category EVERYTHING FROM HERE TO THE SUBMIT BUTTON IS NOT SHOWING UP ON HEROKU-->
+		<!-- Category -->
 		<div class="categories">
 			<% current_user.categories.each do |category| %>
 				<h3 class="category">

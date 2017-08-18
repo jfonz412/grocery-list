@@ -1,8 +1,5 @@
-<!-- NEEDS SCRIPT TO PERFORM WITHOUT RELOADING PAGE -->
-
 <h3>Add new item:</h3>
 	<%= f.fields_for u = @list.items.build, index: u.id do |user_item| %>
-		<%= user_item.hidden_field :user_id, 		 value: current_user.id %>
 		<%= user_item.hidden_field :category_id, value: category_id %>
 		<table class="new-item">
 			<tr>
