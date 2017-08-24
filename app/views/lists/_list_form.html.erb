@@ -25,6 +25,8 @@
 				 			</tr>
 					   	<% category.user_items.each do |item| %>
 						   	<%= f.fields_for l = @list.list_items.build, index: l.id do |list_item| %>
+						   		<% @category = category %>
+						   		<% @f = f %>
 						   		<tr>
 								   	<td><%= list_item.check_box :user_item_id, { checked: false }, item.id, nil %></td>
 							    	<td><%= item.name %></td> 
@@ -37,7 +39,9 @@
 					  	<% end %>
 					  </table>
 					</div>
+					<h3>Create a new item here:</h3>
 					<%= render partial: 'shared/user_item_form', locals: {f: f, category_id: category.id}  %>
+					<h4><span class="glyphicon glyphicon-plus" id="add-item"></span>Add More</h4>
 				</div>
 			<% end %> <!-- current_user.categories -->
 			<br>
@@ -50,5 +54,12 @@
 <script>
   $(document).ready(function () {
       $('.data-toggle').collapse();
+      addNewItemForm();
   });
+
+function addNewItemForm(){
+  $('#add-item').click(function(){
+		$(this).parents(':eq(1)').append("<%= escape_javascript render partial: 'shared/user_item_form', locals: {f: @f, category_id: @category.id} %>");
+  });
+}
 </script>
