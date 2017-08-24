@@ -34,12 +34,13 @@ class ListsControllerTest < ActionDispatch::IntegrationTest
 		log_in_as(users(:bob))
 		assert_difference "UserItem.count" do
 			assert_difference "List.count" do
-				assert_difference "ListItem.count" do
+				assert_difference "ListItem.count", 2 do
 					post list_path, params: { list: { 
 																		name: "List", 
 																		list_item: [{ user_item_id: user_items(:milk).id,
 																								 quantity: 3 }],
-																		user_item: [{ name: "Carrots", category_id: categories(:one).id }] } } 																							  
+																		user_item: [{ name: "Carrots", category_id: categories(:one).id,
+																									price: 2.45, quantity: 3 }] } } 																							  
 				end
 			end
 		end

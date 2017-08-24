@@ -40,7 +40,8 @@ class ListsController < ApplicationController
   private
     def list_params
       params.require(:list).permit(:name, :list_item => [:user_item_id, :quantity],
-      																		:user_item => [:category_id, :name, :price])
+      																		:user_item => [:category_id, :name, 
+                                                         :price, :quantity])
     end
 
   def build_list_items
@@ -55,6 +56,7 @@ class ListsController < ApplicationController
 		unless params[:list][:user_item].nil?
 			params[:list][:user_item].each do |u|
 				item = current_user.user_items.create(name: u[:name], price: u[:price], category_id: u[:category_id])
+        @list.list_items.create(user_item_id: item.id, quantity: u[:quantity])
 			end
 		end
 	end

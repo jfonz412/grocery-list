@@ -12,6 +12,7 @@
 				<td><%= user_item.number_field :price,  :step => "0.01", 
 																			  placeholder: "Price",
 																			  class: "price" %></td>
+				<td><%= user_item.number_field :quantity, min: 1, class: "num"%></td>
 				<td>
 					<span class="glyphicon glyphicon-plus"></span>
 				</td>
