@@ -14,13 +14,6 @@ class CategoryTest < ActiveSupport::TestCase
 		assert_not @category.valid?
 	end
 
-	test "no duplicate categories" do
-		@category.save
-		dup_category = @category.dup
-		dup_category.name = "PRODUCE"
-		assert_not dup_category.valid?
-	end
-
 	test "can't be more than 25 chars" do
 		@category.name = "a" * 26
 		assert_not @category.valid?

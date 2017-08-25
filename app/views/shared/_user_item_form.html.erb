@@ -1,4 +1,4 @@
-<%= f.fields_for u = @list.items.build, index: u.id do |user_item| %>
+<%= fields_for u = @list.items.build, index: u.id do |user_item| %>
 	<%= user_item.hidden_field :category_id, value: category_id %>
 	<table class="new-item">
 		<tr>

@@ -1,0 +1,7 @@
+$(document).ready(function () {
+  addNewItemForm();
+});
+
+function addNewItemForm(){
+	$('#here').append("<%= j render 'shared/user_item_form', category_id: @category.id %>");
+}

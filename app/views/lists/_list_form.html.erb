@@ -41,7 +41,7 @@
 					</div>
 					<h3>Create a new item here:</h3>
 					<%= render partial: 'shared/user_item_form', locals: {f: f, category_id: category.id}  %>
-					<h4><span class="glyphicon glyphicon-plus" id="add-item"></span>Add More</h4>
+					<%= link_to 'Add New Item', new_list_path(:category_id => category.id), remote: true %><span id="here">APPEND TO ME!!!</span>
 				</div>
 			<% end %> <!-- current_user.categories -->
 			<br>
@@ -59,7 +59,7 @@
 
 function addNewItemForm(){
   $('#add-item').click(function(){
-		$(this).parents(':eq(1)').append("<%= escape_javascript render partial: 'shared/user_item_form', locals: {f: @f, category_id: @category.id} %>");
+		$('#here').append();
   });
 }
 </script>

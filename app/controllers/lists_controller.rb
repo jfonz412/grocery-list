@@ -3,6 +3,10 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
+    if params[:category_id]
+      @category = Category.find(params[:category_id]);
+      render 'new.js.erb'
+    end
   end
 
   def create
