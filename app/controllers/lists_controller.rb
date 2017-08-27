@@ -4,7 +4,9 @@ class ListsController < ApplicationController
   def new
     @list = List.new
     if params[:category_id]
-      @category = Category.find(params[:category_id]);
+      @category = Category.find(params[:category_id])
+      @list = List.new
+      #debugger
       render 'new.js.erb'
     end
   end

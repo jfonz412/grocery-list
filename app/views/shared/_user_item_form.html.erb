@@ -1,17 +1,19 @@
-<%= fields_for u = @list.items.build, index: u.id do |user_item| %>
-	<%= user_item.hidden_field :category_id, value: category_id %>
-	<table class="new-item">
-		<tr>
-			<th>Name</th>
-			<th>Price</th>
-		</tr>
-		<tr>
-			<td><%= user_item.text_field :name, placeholder: "Name",
-																		class: "txt" %></td>
-			<td><%= user_item.number_field :price,  :step => "0.01", 
-																		  placeholder: "Price",
-																		  class: "price" %></td>
-			<td><%= user_item.number_field :quantity, min: 1, class: "num"%></td>
-		</tr>
-	</table>
+<%= fields_for @list do |f| %>
+	<%= f.fields_for u = @list.items.build, index: u.id do |user_item| %>
+		<%= user_item.hidden_field :category_id, value: category_id %>
+		<table class="new-item">
+			<tr>
+				<th>Name</th>
+				<th>Price</th>
+			</tr>
+			<tr>
+				<td><%= user_item.text_field :name, placeholder: "Name",
+																			class: "txt" %></td>
+				<td><%= user_item.number_field :price,  :step => "0.01", 
+																			  placeholder: "Price",
+																			  class: "price" %></td>
+				<td><%= user_item.number_field :quantity, min: 1, class: "num"%></td>
+			</tr>
+		</table>
+	<% end %>
 <% end %>
