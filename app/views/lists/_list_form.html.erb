@@ -8,7 +8,7 @@
 				<h3 class="category">
 				  <%= category.name %>
 				</h3>
-				<!-- Items -->   
+				<!-- User Items -->   
 				<div class="dropdown-button" data-toggle="collapse" data-target="#<%= category.name %>">
 					<span class="glyphicon glyphicon-chevron-down"></span>
 				</div>
@@ -26,7 +26,6 @@
 					   	<% category.user_items.each do |item| %>
 						   	<%= f.fields_for l = @list.list_items.build, index: l.id do |list_item| %>
 						   		<% @category = category %>
-						   		<% @f = f %>
 						   		<tr>
 								   	<td><%= list_item.check_box :user_item_id, { checked: false }, item.id, nil %></td>
 							    	<td><%= item.name %></td> 
@@ -41,8 +40,8 @@
 					</div>
 					<h3>Create a new item here:</h3>
 					<%= render partial: 'shared/user_item_form', locals: {category_id: category.id}  %>
-					<%= link_to 'Add New Item', new_list_path(:category_id => category.id), remote: true %>
-					<div id="here">APPEND TO ME!!!</div>
+					<%= link_to 'Add Another New Item', new_list_path(:category_id => category.id), remote: true %>
+					<div id="append-here"></div>
 				</div>
 			<% end %> <!-- current_user.categories -->
 			<br>
