@@ -3,5 +3,6 @@ $(document).ready(function () {
 });
 
 function addNewItemForm(){
-	$('#append-here').append("<%= j render 'shared/user_item_form', list: @list, category_id: @category.id %>");
+	var categoryId = '<%= @category.id %>';
+	$('#append' + categoryId).append("<%= j render 'shared/user_item_form', list: @list, category_id: @category.id %>");
 }
