@@ -4,11 +4,8 @@ class ListsController < ApplicationController
   def new
     @list = List.new
     # Will be called if new user-item form is needed
-    if params[:category_id] 
-      @category = Category.find(params[:category_id])
-      @list = List.new
-      render 'new.js.erb'
-    end
+    create_new_item_form
+    create_new_category
   end
 
   def create
@@ -66,4 +63,18 @@ class ListsController < ApplicationController
 			end
 		end
 	end
+
+  def create_new_item_form
+    if params[:category_id] 
+      @category = Category.find(params[:category_id])
+      @list = List.new
+      render 'new.js.erb'
+    end
+  end
+
+  def create_new_category
+    if params[:new_category]
+      render 'new_category.js.erb'
+    end
+  end
 end

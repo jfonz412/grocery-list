@@ -43,6 +43,10 @@
 					<%= link_to 'Add Another New Item', new_list_path(:category_id => category.id), remote: true %>
 				</div>
 			<% end %> <!-- current_user.categories -->
+			<!-- New category -->
+			<br>
+			<div id="append-new-category"></div>
+			<%= link_to 'Add a New Category', new_list_path(:new_category => true), remote: true %>
 			<br>
 			<%= f.submit "Submit" %>
 		</div>
