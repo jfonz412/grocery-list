@@ -3,5 +3,5 @@ $(document).ready(function () {
 });
 
 function addNewCategoryForm(){
-	$('#append-new-category').append("<%= j render 'shared/new_category_form' %>");
+	$('#append-new-category').append("<%= j render 'shared/new_category_form', locals: {category: @category} %>");
 }

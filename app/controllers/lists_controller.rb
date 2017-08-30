@@ -3,9 +3,8 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
-    # Will be called if new user-item form is needed
     create_new_item_form
-    create_new_category
+    create_new_category_form
   end
 
   def create
@@ -44,37 +43,39 @@ class ListsController < ApplicationController
     def list_params
       params.require(:list).permit(:name, :list_item => [:user_item_id, :quantity],
       																		:user_item => [:category_id, :name, 
-                                                         :price, :quantity])
+                                                         :price, :quantity],
+                                          :category  => [:name])
     end
 
-  def build_list_items
-		unless params[:list][:list_item].nil?
-			params[:list][:list_item].each do |l|
-				@list.list_items.create(user_item_id: l[:user_item_id], quantity: l[:quantity])
-			end
-		end
-	end
+    def build_list_items
+  		unless params[:list][:list_item].nil?
+  			params[:list][:list_item].each do |l|
+  				@list.list_items.create(user_item_id: l[:user_item_id], quantity: l[:quantity])
+  			end
+  		end
+  	end
 
-	def build_user_items
-		unless params[:list][:user_item].nil?
-			params[:list][:user_item].each do |u|
-				item = current_user.user_items.create(name: u[:name], price: u[:price], category_id: u[:category_id])
-        @list.list_items.create(user_item_id: item.id, quantity: u[:quantity])
-			end
-		end
-	end
+  	def build_user_items
+  		unless params[:list][:user_item].nil?
+  			params[:list][:user_item].each do |u|
+  				item = current_user.user_items.create(name: u[:name], price: u[:price], category_id: u[:category_id])
+          @list.list_items.create(user_item_id: item.id, quantity: u[:quantity])
+  			end
+  		end
+  	end
 
-  def create_new_item_form
-    if params[:category_id] 
-      @category = Category.find(params[:category_id])
-      @list = List.new
-      render 'new.js.erb'
+    def create_new_item_form
+      if params[:category_id] 
+        @category = Category.find(params[:category_id])
+        @list = List.new
+        render 'new.js.erb'
+      end
     end
-  end
 
-  def create_new_category
-    if params[:new_category]
-      render 'new_category.js.erb'
+    def create_new_category_form
+      if params[:new_category_form]
+        @category = current_user.categories.build
+        render 'new_category.js.erb'
+      end
     end
-  end
 end

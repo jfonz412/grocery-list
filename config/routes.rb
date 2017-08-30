@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post 'categories/create'
+
   post 'user_items/create'
   get  'user_items/destroy'
   get  'user_items/update'

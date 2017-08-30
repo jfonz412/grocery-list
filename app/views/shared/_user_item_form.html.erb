@@ -7,11 +7,8 @@
 				<th>Price</th>
 			</tr>
 			<tr>
-				<td><%= user_item.text_field :name, placeholder: "Name",
-																			class: "txt" %></td>
-				<td><%= user_item.number_field :price,  :step => "0.01", 
-																			  placeholder: "Price",
-																			  class: "price" %></td>
+				<td><%= user_item.text_field :name, placeholder: "Name", class: "txt" %></td>
+				<td><%= user_item.number_field :price,  :step => "0.01", placeholder: "Price", class: "price"%></td>
 				<td><%= user_item.number_field :quantity, min: 1, class: "num"%></td>
 			</tr>
 		</table>

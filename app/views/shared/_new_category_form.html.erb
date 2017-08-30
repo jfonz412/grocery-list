@@ -1,1 +1,11 @@
-NEW CATEGORY FORM
+<%= form_for @category, url: categories_create_path, remote: true do |f| %>
+	<table>
+		<tr>
+			<th>Category name</th>
+		</tr>
+		<tr>
+			<td><%= f.text_field :name, placeholder: "Name", class: "txt" %></td>
+			<td><%= f.submit "Update Categories" %></td>
+		</tr>
+	</table>
+<% end %>
