@@ -12,7 +12,7 @@ function addCategory(){
 															<div id='<%= @category.name %>' class='collapse'>\
 																<h4>Create a new item here:</h4>\
 																<div id='append<%= @category.id %>'></div>\
-																<%= link_to 'Home', root_url %>\
+																<%= j link_to 'Add Another New Item', new_list_path(:category_id => @category.id), remote: true %>\
 															</div>");
 }
 
