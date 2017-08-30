@@ -10,9 +10,8 @@ function addCategory(){
 																<span class='glyphicon glyphicon-chevron-down'></span>\
 															</div>\
 															<div id='<%= @category.name_without_spaces %>' class='collapse'>\
-																<h4>Create a new item here:</h4>\
 																<div id='append<%= @category.id %>'></div>\
-																<%= j link_to 'Add Another New Item', new_list_path(:category_id => @category.id), remote: true %>\
+																<%= j link_to 'Add New Item', new_list_path(:category_id => @category.id), remote: true %>\
 															</div>");
 }
 
