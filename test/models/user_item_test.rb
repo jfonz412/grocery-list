@@ -38,6 +38,11 @@ class UserItemTest < ActiveSupport::TestCase
 		assert @item.valid?
 	end
 
+	test "price can't be less than 0" do
+		@item.price = -1.05
+		assert_not @item.valid?
+	end
+
 	test "name can't be longer than 20 chars" do
 		@item.name = "a" * 21
 		assert_not @item.valid?
