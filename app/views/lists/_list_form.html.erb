@@ -37,7 +37,7 @@
 					  	<% end %>
 					  </table>
 					</div>
-					<h3>Create a new item here:</h3>
+					<h4>Create a new item here:</h4>
 					<%= render partial: 'shared/user_item_form', locals: {category_id: category.id}  %>
 					<div id='append<%= category.id %>' ></div>
 					<%= link_to 'Add Another New Item', new_list_path(:category_id => category.id), remote: true %>

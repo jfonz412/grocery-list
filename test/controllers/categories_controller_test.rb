@@ -9,6 +9,5 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   	assert_difference "Category.count" do
     	post categories_create_url params: { category: {name: "Category"} }
 	end
-	assert_template 'new'
   end
 end
