@@ -9,11 +9,11 @@
 				  <%= category.name %>
 				</h3>
 				<!-- User Items -->   
-				<div class="dropdown-button" data-toggle="collapse" data-target="#<%= category.name %>">
+				<div class="dropdown-button" data-toggle="collapse" data-target="#<%= category.name_without_spaces %>">
 					<span class="glyphicon glyphicon-chevron-down"></span>
 				</div>
 				<!-- Dropdown div -->
-			 	<div id="<%= category.name %>" class="collapse">
+			 	<div id="<%= category.name_without_spaces %>" class="collapse">
 			 		<div class="table-responsive">
 			 			<!-- User Item table -->
 				 		<table class="items">
