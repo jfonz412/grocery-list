@@ -1,12 +1,8 @@
-<%= fields_for @list do |f| %>
-	<%= f.fields_for u = @list.items.build, index: u.id do |user_item| %>
-		<%= user_item.hidden_field :category_id, value: category_id %>
-		<table class="new-item">
-			<tr>
-				<td><%= user_item.text_field :name, placeholder: "Name", class: "txt" %></td>
-				<td><%= user_item.number_field :price, min: 0.00, :step => "0.01", placeholder: "Price", class: "price"%></td>
-				<td><%= user_item.number_field :quantity, min: 1, class: "num"%></td>
-			</tr>
-		</table>
+<div id="new-item">
+	<h4>Add new items here:</h4>
+	<%= form_for current_user.user_items.build, url: user_items_create_path, remote: true do |f| %>
+		<%= f.text_field :name, placeholder: "Name", class: "txt" %>
+		<%= f.number_field :price, min: 0.00, :step => "0.01", placeholder: "Price", class: "price"%>
+		<%= f.submit "Add Item" %>
 	<% end %>
-<% end %>
+</div>

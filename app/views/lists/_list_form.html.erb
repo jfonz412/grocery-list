@@ -1,5 +1,12 @@
 <div class="new-list">
 	<h2>New List</h2>
+
+	<!-- New Items -->
+	<%= render partial: 'shared/user_item_form' %>
+
+	<!-- New Category -->	
+	<%= render 'shared/new_category_form', locals: {category: @category} %>
+
 	<%= form_for @list, url: list_path, html: {class: "form-signin"} do |f| %>
 		<%= f.text_field :name, placeholder: "Name your list (optional)" %>
 		<!-- Category -->
@@ -38,22 +45,16 @@
 						  	<% end %>
 						  </table>
 						<% end %>
+						PLACEHOLDER, NO ITEMS IN THIS CATEGORY
 					</div>
-					<h4>Create a new items here:</h4>
-					<%= render partial: 'shared/user_item_form', locals: {category_id: category.id}  %>
-					<div id='append<%= category.id %>'></div>
-					<%= link_to 'Add New Item', new_list_path(:category_id => category.id), remote: true %>
 				</div>
+				<div id='append<%= category.id %>'></div><!-- (new category goes here) -->
 			<% end %> <!-- current_user.categories -->
 			<br>
 			<%= f.submit "Create List" %>
 		</div>
 	<% end %>
-	<!-- New Category -->
-	<div id="append-new-category"></div>
-	<%= link_to 'Add a New Category', new_list_path(:new_category_form => true), remote: true %>
 </div>
-
 <!-- dropdown button script -->
 <script>
   $(document).ready(function () {

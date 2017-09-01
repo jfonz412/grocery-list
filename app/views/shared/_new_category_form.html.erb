@@ -1,4 +1,4 @@
-<div class="new-category">
+<div id="new-category">
 	<h4>New Category</h4>
 	<%= form_for @category, url: categories_create_path, remote: true do |f| %>
 		<%= f.text_field :name, placeholder: "Name", class: "txt" %>
