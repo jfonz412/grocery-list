@@ -5,8 +5,7 @@ class UserItem < ApplicationRecord
 	attr_accessor :quantity 
 
 	# Validations
-	validates :name, presence: true, uniqueness: { case_sensitive: false },
-			  						 length: { minimum: 3, maximum: 20 }
+	validates :name, presence: true, length: { minimum: 3, maximum: 20 }
 	validates :price, numericality: {greater_than_or_equal_to: 0}
 	# Relationships
   belongs_to :user

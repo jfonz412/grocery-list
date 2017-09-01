@@ -26,13 +26,6 @@ class UserItemTest < ActiveSupport::TestCase
 		assert_not @item.valid?
 	end
 
-	test "no duplicate items" do
-		@item.save
-		dup_item = @item.dup
-		dup_item.name = "MILK"
-		assert_not dup_item.valid?
-	end
-
 	test "price CAN be blank" do
 		@item.price = nil
 		assert @item.valid?
