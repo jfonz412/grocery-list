@@ -1,6 +1,6 @@
 <% provide(:title, "Your List") %>
 <div class="jumbotron">
-<%= @list.items do |item| %>
-<%= item.name %>
-<% end %>
+	<% @list.items.each do |item| %>
+		<%= item.name %><br>
+	<% end %>
 </div>

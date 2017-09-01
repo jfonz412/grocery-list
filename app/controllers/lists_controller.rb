@@ -58,9 +58,14 @@ class ListsController < ApplicationController
   	def build_user_items
   		unless params[:list][:user_item].nil?
   			params[:list][:user_item].each do |u|
-  				item = current_user.user_items.create(name: u[:name], price: u[:price], category_id: u[:category_id])
-          @list.list_items.create(user_item_id: item.id, quantity: u[:quantity])
-  			end
+  				item = current_user.user_items.build(name: u[:name], price: u[:price], category_id: u[:category_id])
+          debugger
+          item.save
+          list_item = @list.list_items.build(user_item_id: item.id, quantity: u[:quantity])
+  			  if !list_item.save
+            flash[:warning] = list_item.errors.full_messages
+          end
+        end
   		end
   	end
 
