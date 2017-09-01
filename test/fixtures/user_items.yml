@@ -11,3 +11,9 @@ one:
   price: 1.5
   user: two
   category: two
+
+cheese:
+  name: cheese
+  price: 1.5
+  user: bob
+  category: one
