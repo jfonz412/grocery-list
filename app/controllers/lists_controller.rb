@@ -3,7 +3,7 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
-    @category = Category.new
+    @category = Category.new #may need to change this, seems to work for now
   end
 
   def create
@@ -24,7 +24,6 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find_by(id: params[:format]) # not sure why this isn't id by default
-    #debugger
   end
 
   def edit

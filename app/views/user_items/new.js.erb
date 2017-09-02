@@ -1,8 +1,11 @@
 $(document).ready(function () {
-  addNewItemForm();
+  addNewItem();
 });
 
-function addNewItemForm(){
+//ex) will append to <div id='append47'></div>
+//should append list_item nested form?
+//so user_item controller has to make new user_item and list item?
+function addNewItem(){
 	var categoryId = '<%= @category.id %>';
 	$('#append' + categoryId).append("<%= j render 'shared/user_item_form', list: @list, category_id: @category.id %>");
 }

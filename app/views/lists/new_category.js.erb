@@ -1,7 +1,0 @@
-$(document).ready(function () {
-  addNewCategoryForm();
-});
-
-function addNewCategoryForm(){
-	$('#append-new-category').append("<%= j render 'shared/new_category_form', locals: {category: @category} %>");
-}
