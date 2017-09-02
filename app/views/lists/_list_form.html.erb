@@ -23,7 +23,7 @@
 			 	<div id="<%= category.name_without_spaces %>" class="collapse">
 			 		<div class="table-responsive">
 			 			<!-- User Item table -->
-				 		<% unless category.user_items[0].nil? %>
+				 		<% #unless category.user_items[0].nil? %>
 					 		<table class="items">
 					 			<tr>
 					 				<th>Add</th>
@@ -32,20 +32,10 @@
 					 				<th>Qnty</th>
 					 			</tr>
 						   	<% category.user_items.each do |item| %>
-							   	<%= f.fields_for l = @list.list_items.build, index: l.id do |list_item| %>
-							   		<tr>
-									   	<td><%= list_item.check_box :user_item_id, { checked: false }, item.id, nil %></td>
-								    	<td><%= item.name %></td> 
-								    	<td>$<%= number_with_precision(item.price, :precision => 2) %></td>
-						  				<td><%= list_item.number_field :quantity, 
-						  																			 	min: 1,
-						  																			 	class: "num"%></td>
-								    </tr>
-							    <% end %>
+						   		<%= render 'shared/list_item_form', item: item, list: @list %>
 						  	<% end %>
 						  </table>
-						<% end %>
-						PLACEHOLDER, NO ITEMS IN THIS CATEGORY
+						<% #end %>
 					</div>
 					<div id='append<%= category.id %>'></div><!-- Append stuff within a category here -->
 				</div>
