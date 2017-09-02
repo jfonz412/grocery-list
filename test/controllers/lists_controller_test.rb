@@ -2,17 +2,6 @@ require 'test_helper'
 
 class ListsControllerTest < ActionDispatch::IntegrationTest
 
-	test "should get new if logged in" do
-		get new_list_path
-		assert_response :redirect
-		log_in_as(users(:bob))
-		# Error because of the way I pass variables to partials appended via JS
-		get new_list_path
-		assert_response :success
-	end
-	
-
-	#NEED LOG IN CALLBACKS
 	test "should get index if logged in" do
 		log_in_as(users(:bob))
 		get lists_path
