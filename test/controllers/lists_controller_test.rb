@@ -20,6 +20,20 @@ class ListsControllerTest < ActionDispatch::IntegrationTest
 		assert_response :success
 	end
 
+	test "must be logged in to create list" do 
+		assert_no_difference "List.count" do
+			assert_no_difference "ListItem.count" do
+				post list_path, params: { list: { 
+																	name: "List", 
+																	list_item: [{ user_item_id: user_items(:milk).id,
+																							 	quantity: 3 },
+																						  { user_item_id: user_items(:cheese).id,
+																						 		quantity: 2 }] } }																					  
+			end
+		end
+		assert_response :redirect
+	end
+
 	test "should create valid list, list_items and user_items" do
 		log_in_as(users(:bob))
 		assert_difference "List.count" do
