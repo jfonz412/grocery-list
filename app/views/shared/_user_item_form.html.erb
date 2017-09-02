@@ -3,6 +3,11 @@
 	<%= form_for current_user.user_items.build, url: user_items_create_path, remote: true do |f| %>
 		<%= f.text_field :name, placeholder: "Name", class: "txt" %>
 		<%= f.number_field :price, min: 0.00, :step => "0.01", placeholder: "Price", class: "price"%>
+		<%= f.select :category_id do %>
+			<% current_user.categories.each do |category| %>
+				<%= content_tag(:option, category.name, value: category.id) %>
+			<% end %>
+		<% end %>
 		<%= f.submit "Add Item" %>
 	<% end %>
 </div>

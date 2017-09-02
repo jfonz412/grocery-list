@@ -15,7 +15,7 @@ class UserItemsController < ApplicationController
   end
 
   private
-    def category_params
+    def user_item_params
       params.require(:user_item).permit(:name, :price, :category_id)
     end
 end
