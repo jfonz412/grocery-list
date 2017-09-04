@@ -24,7 +24,7 @@
 			 		<div class="table-responsive">
 			 			<!-- User Item table -->
 				 		<% #unless category.user_items[0].nil? %>
-					 		<table class="items">
+					 		<table class='items' id='append<%= category.id %>'>
 					 			<tr>
 					 				<th>Add</th>
 					 				<th>Name</th>
@@ -32,12 +32,12 @@
 					 				<th>Qnty</th>
 					 			</tr>
 						   	<% category.user_items.each do |item| %>
-						   		<%= render 'shared/list_item_form', item: item, list: @list %>
+						   		<tr><%= render 'shared/list_item_form', item: item, list: @list %></tr>
 						  	<% end %>
+						  	<div ></div> <!-- New items appended here -->
 						  </table>
 						<% #end %>
 					</div>
-					<div id='append<%= category.id %>'></div><!-- Append stuff within a category here -->
 				</div>
 			<% end %> <!-- current_user.categories -->
 			<br>

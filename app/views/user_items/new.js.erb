@@ -7,5 +7,6 @@ $(document).ready(function () {
 //so user_item controller has to make new user_item and list item?
 function addNewItem(){
 	var categoryId = '<%= params[:user_item][:category_id] %>';
-	$('#append' + categoryId).append("<%= j render 'shared/list_item_form', list: @list, category_id: @category.id %>");
+	console.log('#append' + categoryId);
+	$('#append' + categoryId).append("<tr><%= j render 'shared/list_item_form', list: @list, item: @user_item %></tr>");
 }
