@@ -23,7 +23,6 @@
 			 	<div id="<%= category.name_without_spaces %>" class="collapse">
 			 		<div class="table-responsive">
 			 			<!-- User Item table -->
-				 		<% #unless category.user_items[0].nil? %>
 					 		<table class='items' id='append<%= category.id %>'>
 					 			<tr>
 					 				<th>Add</th>
@@ -34,9 +33,7 @@
 						   	<% category.user_items.each do |item| %>
 						   		<tr><%= render 'shared/list_item_form', item: item, list: @list %></tr>
 						  	<% end %>
-						  	<div ></div> <!-- New items appended here -->
 						  </table>
-						<% #end %>
 					</div>
 				</div>
 			<% end %> <!-- current_user.categories -->
