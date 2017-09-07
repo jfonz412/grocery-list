@@ -25,11 +25,12 @@
 					 			</tr>
 						   	<% @list.items.each do |item| %>
 						   		<% if item.category == category %>
+						   			<% list_item = @list.list_items.find_by(user_item_id: item.id) %>
 							   		<tr>
 							   			<th><%= 'X' %></th>
 							   			<th><%= item.name %></th>
 							   			<th><%= item.price %></th>
-							   			<th><%= item.quantity %></th>
+							   			<th><%= list_item.quantity %></th>
 							   		</tr>
 							   	<% end %>
 						  	<% end %>
