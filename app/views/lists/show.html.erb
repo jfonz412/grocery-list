@@ -1,6 +1,49 @@
 <% provide(:title, "Your List") %>
 <div class="jumbotron">
-	<% @list.items.each do |item| %>
-		<%= item.name %><br>
-	<% end %>
+	<div class="new-list">
+		<h2><%= @list.name %></h2>
+		<!-- Category -->
+		<div class="categories">
+			<% current_user.categories.each do |category| %>
+				<h3 class="category">
+				  <%= category.name %>
+				</h3>
+				<!-- User Items -->   
+				<div class="dropdown-button" data-toggle="collapse" data-target="#<%= category.name_without_spaces %>">
+					<span class="glyphicon glyphicon-chevron-down"></span>
+				</div>
+				<!-- Dropdown div -->
+			 	<div id="<%= category.name_without_spaces %>" class="collapse">
+			 		<div class="table-responsive">
+			 			<!-- User Item table -->
+					 		<table class='items' id='append<%= category.id %>'>
+					 			<tr>
+					 				<th>Add</th>
+					 				<th>Name</th>
+					 				<th>Price</th>
+					 				<th>Qnty</th>
+					 			</tr>
+						   	<% @list.items.each do |item| %>
+						   		<% if item.category == category %>
+							   		<tr>
+							   			<th><%= 'X' %></th>
+							   			<th><%= item.name %></th>
+							   			<th><%= item.price %></th>
+							   			<th><%= item.quantity %></th>
+							   		</tr>
+							   	<% end %>
+						  	<% end %>
+						  </table>
+					</div>
+				</div>
+			<% end %> <!-- current_user.categories -->
+			<br>
+		</div>
+	</div>
 </div>
+<!-- dropdown button script -->
+<script>
+  $(document).ready(function () {
+      $('.data-toggle').collapse();
+  });
+</script>
