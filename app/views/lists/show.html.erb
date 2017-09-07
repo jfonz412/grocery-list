@@ -18,7 +18,6 @@
 			 			<!-- User Item table -->
 					 		<table class='items' id='append<%= category.id %>'>
 					 			<tr>
-					 				<th>Add</th>
 					 				<th>Name</th>
 					 				<th>Price</th>
 					 				<th>Qnty</th>
@@ -27,7 +26,6 @@
 						   		<% if item.category == category %>
 						   			<% list_item = @list.list_items.find_by(user_item_id: item.id) %>
 							   		<tr>
-							   			<th><%= 'X' %></th>
 							   			<th><%= item.name %></th>
 							   			<th><%= item.price %></th>
 							   			<th><%= list_item.quantity %></th>
@@ -38,8 +36,8 @@
 					</div>
 				</div>
 			<% end %> <!-- current_user.categories -->
-			<br>
 		</div>
+		<h2>Total:<span id="total"> $<%= @list.total %></span></h2>
 	</div>
 </div>
 <!-- dropdown button script -->
