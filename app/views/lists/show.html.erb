@@ -1,7 +1,7 @@
 <% provide(:title, "Your List") %>
 <div class="jumbotron">
 	<div class="new-list">
-		<h2><%= @list.name %></h2>
+		<h2 id='list-name'><%= @list.name %></h2>
 		<!-- Category -->
 		<div class="categories">
 			<% current_user.categories.each do |category| %>
