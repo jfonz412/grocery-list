@@ -10,8 +10,15 @@ function addCategory(){
 																	<span class='glyphicon glyphicon-chevron-down'></span>\
 																</div>\
 																<div id='<%= @category.name_without_spaces %>' class='collapse'>\
-																	<div id='append<%= @category.id %>'></div>\
-																	PLACEHOLDER FOR NEW CATEGORY\
+															 		<div class='table-responsive'>\
+															 			<!-- User Item table -->\
+																	 		<table class='items' id='append<%= @category.id %>'>\
+																	 			<tr>\
+																	 				<th>Add</th>\
+																	 				<th>Name</th>\
+																	 				<th>Price</th>\
+																	 				<th>Qnty</th>\
+																	 			</tr>\
 																</div>");
 	$('#user_item_category_id').append('<option value="<%= @category.id %>"><%= @category.name %></option>');
 }
