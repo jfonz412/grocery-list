@@ -13,7 +13,7 @@ function addCategory(){
 																	<div id='append<%= @category.id %>'></div>\
 																	PLACEHOLDER FOR NEW CATEGORY\
 																</div>");
+	$('#user_item_category_id').append('<option value="<%= @category.id %>"><%= @category.name %></option>');
 }
 
 
-									

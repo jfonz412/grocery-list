@@ -99,11 +99,16 @@ body {
 	}
 }
 
+.create-list {
+	text-align: center;
+}
+
 /* new form */
 
 #new-item {
 	background-color: white;
 	border: 1px solid #b3abab;
+	border-radius: 5px;
 	margin-top: 10px;
 	width: 75%;
 	padding:10px;
@@ -113,6 +118,7 @@ body {
 #new-category {
 	background-color: white;
 	border: 1px solid #b3abab;
+	border-radius: 5px;
 	margin-top: 10px;
 	width:75%;
 	padding:10px;
