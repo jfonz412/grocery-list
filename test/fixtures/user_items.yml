@@ -6,6 +6,12 @@ milk:
   user: bob
   category: one
 
+yogurt:
+  name: yogurt
+  price: 1.5
+  user: bob
+  category: one
+
 one:
   name: MyString
   price: 1.5
