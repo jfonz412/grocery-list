@@ -34,7 +34,7 @@ class ListsControllerTest < ActionDispatch::IntegrationTest
 		assert_response :redirect
 	end
 
-	test "should create valid list, list_items and user_items" do
+	test "should create valid list and list items" do
 		log_in_as(users(:bob))
 		assert_difference "List.count" do
 			assert_difference "ListItem.count", 2 do
@@ -47,5 +47,9 @@ class ListsControllerTest < ActionDispatch::IntegrationTest
 			end
 		end
 		assert_not flash.empty?
+		# Means that controller is working fine
+		# Points to user_item JS creation or HTML as the culprit
+		assert ListItem.first.quantity == 3
+		assert ListItem.second.quantity == 2
 	end
 end

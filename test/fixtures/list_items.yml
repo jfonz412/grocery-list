@@ -1,4 +1,4 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
+# List controller test depends on there being no ListItems (lines 50/51)
 
 
