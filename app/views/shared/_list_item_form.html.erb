@@ -1,8 +1,6 @@
 <%= form_for list do |f| %> <!-- This might be an issue in production mode -->
 	<%= f.fields_for l = list.list_items.build, index: l.id do |list_item| %>
-		<%= list_item.hidden_field :user_item_id, value: item.id %>
-			<!-- checkboxes seem problematic use JQ to render form or not -->
-			<td>CHK</td>
+		 	<td><%= list_item.check_box :user_item_id, { checked: false }, item.id, "nil" %></td> <!-- checkboxes seem problematic, try check_box_tag? -->
 			<td><%= item.name %></td> 
 			<td>$<%= number_with_precision(item.price, :precision => 2) %></td>
 			<td><%= list_item.number_field :quantity, 
