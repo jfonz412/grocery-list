@@ -1,4 +1,4 @@
-<%= form_for list do |f| %> <!-- This might be an issue in production mode -->
+<!-- This might be an issue in production mode (CSRF) -->
 	<%= f.fields_for l = list.list_items.build, index: l.id do |list_item| %>
 		 	<td><%= list_item.check_box :user_item_id, { checked: false }, item.id, "nil" %></td> <!-- checkboxes seem problematic, try check_box_tag? -->
 			<td><%= item.name %></td> 
@@ -7,4 +7,3 @@
 																		 	min: 1,
 																		 	class: "num"%></td>
 	<% end %>
-<% end %>

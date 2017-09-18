@@ -28,7 +28,7 @@
 					 				<th>Qnty</th>
 					 			</tr>
 						   	<% category.user_items.each do |item| %>
-						   		<tr><%= render 'shared/list_item_form', item: item, list: @list %></tr>
+						   		<tr><%= render 'shared/list_item_form', item: item, list: @list, f: f %></tr>
 						  	<% end %>
 						  </table>
 					</div>
