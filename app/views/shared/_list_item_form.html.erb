@@ -1,9 +1,8 @@
-<!-- This might be an issue in production mode (CSRF) -->
-	<%= f.fields_for l = list.list_items.build, index: l.id do |list_item| %>
-		 	<td><%= list_item.check_box :user_item_id, { checked: false }, item.id, "nil" %></td> <!-- checkboxes seem problematic, try check_box_tag? -->
-			<td><%= item.name %></td> 
-			<td>$<%= number_with_precision(item.price, :precision => 2) %></td>
-			<td><%= list_item.number_field :quantity, 
-																		 	min: 1,
-																		 	class: "num"%></td>
-	<% end %>
+<%= f.fields_for l = list.list_items.build, index: l.id do |list_item| %>
+	 	<td><%= list_item.check_box :user_item_id, { checked: false }, item.id, "nil" %></td> 
+		<td><%= item.name %></td> 
+		<td>$<%= number_with_precision(item.price, :precision => 2) %></td>
+		<td><%= list_item.number_field :quantity, 
+																	 	min: 1,
+																	 	class: "num"%></td>
+<% end %>
