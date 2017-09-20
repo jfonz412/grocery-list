@@ -1,4 +1,4 @@
-<div id="new-item">
+<div class="new-item">
 	<h4>Add new items here:</h4>
 	<%= form_for current_user.user_items.build, url: user_items_create_path, remote: true do |f| %>
 		<%= f.text_field :name, placeholder: "Name", class: "txt" %>
