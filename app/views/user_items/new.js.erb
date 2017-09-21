@@ -7,6 +7,6 @@ function addNewItem(){
 	var categoryId = '<%= params[:user_item][:category_id] %>';
 	console.log('#append' + categoryId);
 	'<%= form_for(@list) do |f| %>'
-	$('#append' + categoryId).append("<tr><%= j render 'shared/list_item_form', list: @list, item: @user_item, f: f %></tr>");
+	$('#append' + categoryId).append("<tr id='item-row-<%=@user_item.id%>'><%= j render 'shared/list_item_form', list: @list, item: @user_item, f: f %></tr>");
 	'<% end %>'
 }
