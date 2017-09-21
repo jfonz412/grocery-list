@@ -1,0 +1,8 @@
+$(document).ready(function () {
+  removeRow();
+});
+
+function removeRow(){
+	var userItemId = '<%= @user_item.id %>';
+	$('#item-row-' + userItemId).remove();
+}

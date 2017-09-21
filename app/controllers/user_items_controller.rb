@@ -27,7 +27,7 @@ class UserItemsController < ApplicationController
   def update
     @user_item = UserItem.find(params[:user_item_id])
     @user_item.update_attribute(:included, false)
-    #remove list_item form with jquery
+    render 'remove_row'
   end
 
   private
