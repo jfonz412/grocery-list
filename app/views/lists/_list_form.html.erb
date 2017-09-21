@@ -26,6 +26,8 @@
 					 				<th>Name</th>
 					 				<th>Price</th>
 					 				<th>Qnty</th>
+					 				<th>Edit</th>
+					 				<th>Remove</th>
 					 			</tr>
 						   	<% category.user_items.each do |item| %>
 						   		<tr><%= render 'shared/list_item_form', item: item, list: @list, f: f %></tr>
