@@ -7,8 +7,9 @@ class UserItemTest < ActiveSupport::TestCase
 													category_id: categories(:one).id)
 	end
 
-	test "should be valid" do
+	test "should be valid and inlcuded" do
 		assert @item.valid?
+		assert @item.included?
 	end
 
 	test "must have user id" do
