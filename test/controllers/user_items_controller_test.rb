@@ -27,7 +27,6 @@ class UserItemsControllerTest < ActionDispatch::IntegrationTest
 	end
 
 	test "Update 'included' status when logged in" do
-		# now logged in
 		log_in_as(users(:bob))
 		patch user_items_path, params: { user_item_id: user_items(:milk).id }
 		assert_not UserItem.find(user_items(:milk).id).included?
