@@ -1,8 +1,5 @@
 class UserItem < ApplicationRecord
 	before_validation :set_nil_price
-	
-	# So when new item is added it can immediately be added to a list
-	attr_accessor :quantity 
 
 	# Validations
 	validates :name, presence: true, length: { minimum: 3, maximum: 20 }
