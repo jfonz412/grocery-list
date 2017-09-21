@@ -84,22 +84,26 @@ body {
 }
 
 .items {
-	border: 1px solid black;
+	border: .1px solid #b3abab;
 	background-color: white;
+	border-collapse: separate !important;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
 	/* checkbox */
 	#list_list_item__user_item_id {
 		
 	}
 	th {
-		border: 1px solid #b3abab;
+		border: .1px solid #b3abab;
 		padding: 10px;
 		text-align: center;
 	}
 	tr {
-		border: 1px solid #b3abab;
+		border: .1px solid #b3abab;
 	}
 	td {
-		border: 1px solid #b3abab;
+		border: .1px solid #b3abab;
 		text-align: center;
 		padding: 5px;
 	}
