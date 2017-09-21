@@ -1,3 +1,6 @@
+<!-- Probably want to remove this from the view into controller or something -->
+<% delete_message = "Delete this item from your list of saved items? (to exclude it from your current list, simply leave it unchecked." %>
+
 <%= f.fields_for l = list.list_items.build, index: l.id do |list_item| %>
 	 	<td><%= list_item.check_box :user_item_id, { checked: false }, item.id, "nil" %></td> 
 		<td><%= item.name %></td> 
@@ -6,5 +9,9 @@
 																	 	min: 1,
 																	 	class: "num"%></td>
 		<td><span class="glyphicon glyphicon-pencil"></span></td>
-		<td><span class="glyphicon glyphicon-remove"></span></td>
+		<td>
+			<%= link_to user_items_path(:user_item_id => item.id), method: :delete, confirm: 'Delete?', class: 'delete-link', 'data-message' => delete_message, 'data-severity' => 'danger', :remote => true do %>
+				<span class="glyphicon glyphicon-remove"></span>
+			<% end %>
+		</td>
 <% end %>

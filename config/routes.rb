@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   post 'categories/create'
 
   # User Items
-  post 'user_items/create'
-  get  'user_items/destroy'
-  get  'user_items/update'
-  get  'user_items/index'
-  get  'user_items/edit'
+  post    'user_items/create'
+  delete  'user_items',        to: 'user_items#destroy'
+  post    'user_items',        to: 'user_items#update'
+  get     'user_items/index'
+  get     'user_items/edit'
 
   # Static Pages
   get     '/about',    to: 'static_pages#about'
