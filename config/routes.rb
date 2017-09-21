@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # User Items
   post    'user_items/create'
   delete  'user_items',        to: 'user_items#destroy'
-  post    'user_items',        to: 'user_items#update'
+  patch    'user_items',        to: 'user_items#update'
   get     'user_items/index'
   get     'user_items/edit'
 

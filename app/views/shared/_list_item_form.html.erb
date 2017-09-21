@@ -10,7 +10,7 @@
 																	 	class: "num"%></td>
 		<td><span class="glyphicon glyphicon-pencil"></span></td>
 		<td>
-			<%= link_to user_items_path(:user_item_id => item.id), method: :delete, confirm: 'Delete?', class: 'delete-link', 'data-message' => delete_message, 'data-severity' => 'danger', :remote => true do %>
+			<%= link_to user_items_path(:user_item_id => item.id), method: :patch, confirm: 'Delete?', class: 'delete-link', 'data-message' => delete_message, 'data-severity' => 'danger', :remote => true do %>
 				<span class="glyphicon glyphicon-remove"></span>
 			<% end %>
 		</td>

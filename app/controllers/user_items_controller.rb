@@ -15,15 +15,19 @@ class UserItemsController < ApplicationController
   def index
   end
 
+  # not currently used
   def destroy
-    @user_item = UserItem.find(params[:user_item_id]);
-    @user_item.destroy
+    #@user_item = UserItem.find(params[:user_item_id])
+    #@user_item.destroy
   end
 
   def edit
   end
 
   def update
+    @user_item = UserItem.find(params[:user_item_id])
+    @user_item.update_attribute(:included, false)
+    #remove list_item form with jquery
   end
 
   private
