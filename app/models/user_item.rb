@@ -10,7 +10,7 @@ class UserItem < ApplicationRecord
 	# Relationships
   belongs_to :user
   belongs_to :category
-  has_many 	 :list_items
+  has_many 	 :list_items, :dependent => :destroy_list_items # prevents error
   has_many   :lists, :through => :list_items
 
   private 

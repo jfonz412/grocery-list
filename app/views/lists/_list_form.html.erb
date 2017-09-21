@@ -30,7 +30,7 @@
 					 				<th>Remove</th>
 					 			</tr>
 						   	<% category.user_items.each do |item| %>
-						   		<tr><%= render 'shared/list_item_form', item: item, list: @list, f: f %></tr>
+						   		<tr><%= render('shared/list_item_form', item: item, list: @list, f: f) if item.included? %></tr>
 						  	<% end %>
 						  </table>
 					</div>

@@ -1,5 +1,5 @@
 <!-- Probably want to remove this from the view into controller or something -->
-<% delete_message = "Delete this item from your list of saved items? (to exclude it from your current list, simply leave it unchecked." %>
+<% delete_message = "Prevent this item from showing up on future lists? (to simply exclude it from your current list, just leave it unchecked." %>
 
 <%= f.fields_for l = list.list_items.build, index: l.id do |list_item| %>
 	 	<td><%= list_item.check_box :user_item_id, { checked: false }, item.id, "nil" %></td> 

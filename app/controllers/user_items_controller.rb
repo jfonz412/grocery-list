@@ -16,6 +16,8 @@ class UserItemsController < ApplicationController
   end
 
   def destroy
+    @user_item = UserItem.find(params[:user_item_id]);
+    @user_item.destroy
   end
 
   def edit
